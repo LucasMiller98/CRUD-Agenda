@@ -8,41 +8,27 @@
     <div class="col-lg-8 my-3">
       <h1 class="text-center">Criar conta ou entrar</h1>
       <p class="text-center lead">Faça login ou crie sua conta abaixo.</p>
+
+      <%- include('includes/messages')  %> 
       
       <div class="row">
         <div class="col-lg">
           <h4>Faça seu cadastro</h4>
 
           <form action="/login/register" method="POST">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
             
             <div class="mb-3">
-              <label 
-                for="exampleInputEmail1" 
-                class="form-label"
-              >
-                Email address
-              </label>
+              <label>Seu email</label>
               <input 
                 name="email"
                 type="email" 
                 class="form-control" 
                 placeholder="email@email.com"
               >
-              <div 
-                id="emailHelp" 
-                class="form-text"
-              >
-                We'll never share your email with anyone else.
-              </div>
             </div>
             <div class="mb-3">
-              <label 
-                for="exampleInputPassword1" 
-                class="form-label"
-              >
-                Password
-              </label>
+              <label>Sua senha</label>
               <input 
                 type="password" 
                 class="form-control" 
@@ -62,38 +48,23 @@
         <div class="col-lg">
           <h4>Faça seu login</h4>
 
-          <form action="login/login">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <form action="/login/login" method="POST">
+            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
             
             <div class="mb-3">
-              <label 
-                for="exampleInputEmail1" 
-                class="form-label"
-              >
-                Email address
-              </label>
+              <label>Seu email</label>
               <input 
                 type="email" 
                 class="form-control" 
                 name="email"                
                 placeholder="email@email.com"
               >
-              <div 
-                id="emailHelp" 
-                class="form-text"
-              >
-                We'll never share your email with anyone else.
-              </div>
             </div>
             <div class="mb-3">
-              <label 
-                for="exampleInputPassword1" 
-                class="form-label"
-              >
-                Password
-              </label>
+              <label>Sua senha</label>
               <input 
                 type="password" 
+                name="password"
                 class="form-control" 
                 placeholder="******"
               >
