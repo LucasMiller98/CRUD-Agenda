@@ -13,12 +13,22 @@
       
       <div class="responsive-table">
         <table class="table my-3">
-          <tr>
-            <td>Lucas</td>
-            <td>Miller</td>
-            <td>91829121</td>
-            <td>email.email@email.com</td>
-          </tr>
+          
+          <% for(let contact of contacts) { %>
+            <tr>
+              <td><%= contact.name %></td>
+              <td><%= contact.surname %></td>
+              <td><%= contact.phone %></td>
+              <td><%= contact.email %></td>
+              <td>
+                <a class="text-edit" href="/contact/index/<%= contact._id %>">Editar</a>
+              </td>
+              <td>
+                <a class="text-danger" href="/contact/delete/<%= contact._id %>">Excluir</a>
+              </td>
+            </tr>
+          <% } %>
+          
         </table>
 
       </div>

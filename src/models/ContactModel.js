@@ -22,9 +22,16 @@ class Contact {
 
     if(typeof id !== 'string') return
     
-    const user = await ContactModel.findById(id)
+    const contact = await ContactModel.findById(id)
 
-    return user
+    return contact
+  }
+
+  static async searchContacts() {
+    const contacts = await ContactModel.find()
+      .sort({ createAt: -1 }) 
+
+    return contacts
   }
 
   async register() {
@@ -34,6 +41,13 @@ class Contact {
 
     this.contact = await ContactModel.create(this.body)
 
+  }
+
+  static async delete(id) {
+    if(typeof id !== 'string') return
+
+    const contact = await ContactModel.findOneAndDelete({ _id: id })
+    return contact
   }
 
   valida() {
@@ -65,6 +79,19 @@ class Contact {
       phone: this.body.phone
     }
   }
+
+  async edit(id) {
+    if(typeof id !== 'string') return
+
+    this.valida()
+
+    if(this.errors.length > 0) return
+
+    this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true }) // retorna os dados atualizados.
+    
+
+  }
+  
 }
 
 module.exports = Contact
